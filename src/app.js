@@ -1,19 +1,29 @@
 const express = require("express");
 const mongoose = require("mongoose");
+//to pass JSON to objects
+const bodyParser = require('body-parser')
 require("dotenv").config();
 
 //App
 
 const app = express();
 
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
+
 //Mongoose
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DATABASE_CONNECTION_STRING,{useNewUrlParser:true, useFindAndModify:true,
-    useCreateIndex:true, useUnifiedTopology:true}).then(
+//connecting on Mongo Atlas, string on .env
+mongoose.connect(process.env.DATABASE_CONNECTION_STRING,{useNewUrlParser:true,
+    //options since mongoose 5.2 version
+    useFindAndModify:true,useCreateIndex:true, useUnifiedTopology:true}).then(
     console.log("Successfully connected")
 ).catch((err)=>{
     console.log("Connection failed" + err)
 });
+
+//Load models
+const Quotes = require("./models/Quotes")
 
 const db = mongoose.connection;
 
@@ -34,11 +44,8 @@ process.on("SIGINT",() => {
     });
 });
 
-//Load models
-const Quotes = require("./models/Quotes")
-
 //Load routes
-
+//Define routes to each controllers
 const indexRoutes = require("./routes/index-routes");
 app.use("/", indexRoutes);
 
