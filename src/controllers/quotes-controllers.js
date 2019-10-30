@@ -7,7 +7,7 @@ const Quotes = mongoose.model("Quotes");
 exports.listQuotes = async(req, res) => {
     try{
         //listing saved quotes
-        const data = await Quotes.find({});
+        const data = await Quotes.find({}, "phrase author -_id");
         res.status(200).send(data);
     } catch (err){
         res.status(500).send({message:"Error on try to find the quotes" + err})
