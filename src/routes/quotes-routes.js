@@ -13,4 +13,6 @@ router.post('/', [
         .withMessage("The mention length has to be between 7 and 100 characters")
 ],quotesController.createQuotes);
 
+router.delete('/:id', quotesController.deleteQuote);
+
 module.exports = router;

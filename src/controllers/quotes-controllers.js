@@ -46,3 +46,17 @@ exports.createQuotes = async (req,res) => {
         }
     }
 }
+
+exports.deleteQuote = async (req, res) => {
+    try {
+      await repository.deleteQuote(req.params.id);
+      res.status(200).send({
+        message: 'Quote successfully deleted'
+      });
+    } catch (e) {
+      res.status(500).send({message: 'Error on delete the quote'+e});
+    
+    }
+}
+
+//"message": "Error on delete the quoteObjectParameterError: Parameter \"filter\" to find() must be an object, got 5dbb2ac2c976ef1a34298a4f"
