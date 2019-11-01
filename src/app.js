@@ -16,7 +16,7 @@ mongoose.Promise = global.Promise;
 //connecting on Mongo Atlas, string on .env
 mongoose.connect(process.env.DATABASE_CONNECTION_STRING,{useNewUrlParser:true,
     //options since mongoose 5.2 version
-    useFindAndModify:true,useCreateIndex:true, useUnifiedTopology:true}).then(
+    useFindAndModify:false,useCreateIndex:true, useUnifiedTopology:true}).then(
     console.log("Successfully connected")
 ).catch((err)=>{
     console.log("Connection failed" + err)

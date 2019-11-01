@@ -40,9 +40,7 @@ function onError(error) {
       break;
     default:
       throw error;
-  
     }
-  
 }
 // listener handler
 function onListening() {
