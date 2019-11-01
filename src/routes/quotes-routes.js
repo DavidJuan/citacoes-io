@@ -3,7 +3,7 @@ const router = express.Router();
 const quotesController = require('../controllers/quotes-controllers');
 const {check} = require("express-validator")
 
-router.get('/', quotesController.listQuotes);
+//CREATE
 router.post('/', [
     check("phrase")
         .isLength({min:7, max:100})
@@ -13,6 +13,20 @@ router.post('/', [
         .withMessage("The mention length has to be between 7 and 100 characters")
 ],quotesController.createQuotes);
 
-router.delete('/:id', quotesController.deleteQuote);
+//READ
+router.get('/', quotesController.listQuotes);
+
+//UPDATE
+router.put('/:id', [
+    check("phrase")
+        .isLength({min:7, max:100})
+        .withMessage("The mention length has to be between 7 and 100 characters"),
+    check("author")
+        .isLength({min:7, max:50})
+        .withMessage("The mention length has to be between 7 and 100 characters")
+], quotesController.updateQuotes)
+
+//DELETE
+router.delete('/:id', quotesController.deleteQuotes);
 
 module.exports = router;

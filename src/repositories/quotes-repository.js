@@ -1,13 +1,7 @@
 const mongoose = require("mongoose");
 const Quotes = mongoose.model("Quotes");
 
-exports.listQuotes = async () => {
-    //listing saved quotes
-    const res = await Quotes.find({}, "phrase author");
-    return res;
-    
-}
-
+//create
 exports.createQuotes = async (data) => {
     //saving quote conforming model layout
     const quote = new Quotes(data)
@@ -16,6 +10,23 @@ exports.createQuotes = async (data) => {
     await quote.save()
 }
 
-exports.deleteQuote = async id => {
-    await Quotes.deleteOne(id);
+//read
+exports.listQuotes = async () => {
+    //listing saved quotes
+    const res = await Quotes.find({}, "phrase author ");
+    return res;
+    
+}
+
+//update
+exports.updateQuotes = async (_id, data) => {
+    await Quotes.findByIdAndUpdate(_id,{
+        $set: data},
+        {new: true}
+    )
+}
+
+//delete
+exports.deleteQuotes = async (_id) => {
+    await Quotes.deleteOne({_id});
 }
