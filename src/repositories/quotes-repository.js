@@ -3,17 +3,17 @@ const Quotes = mongoose.model("Quotes");
 
 //create
 exports.createQuotes = async (data) => {
-    //saving quote conforming model layout
+    //saving conforming model layout
     const quote = new Quotes(data)
     console.log(quote)
-    //saving quote on DB
+    //saving on DB
     await quote.save()
 }
 
 //read
 exports.listQuotes = async () => {
-    //listing saved quotes
-    const res = await Quotes.find({}, "phrase author ");
+    //listing saved
+    const res = await Quotes.find({}, "phrase author");
     return res;
     
 }

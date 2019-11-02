@@ -8,10 +8,28 @@ const Quote = new Schema({
         trim: true
     },
     author:{
+        type: Schema.Types.ObjectId,
+        ref: "Authors",
+        required: true
+    },
+    category:{
         type: String,
-        required:true,
         trim: true
-    }
+    },
+    midia:{
+        type: String,
+        trim: true
+    },
+    dateQuote:{
+        type: Date,
+        required: true,
+        trim: true,
+        default: Date.now()
+    },
+    dateCreation:{
+        type: Date,
+        default: Date.now()
+    },
 })
 
 module.exports = mongoose.model("Quotes", Quote);
