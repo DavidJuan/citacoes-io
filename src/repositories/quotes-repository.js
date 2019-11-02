@@ -13,7 +13,7 @@ exports.createQuotes = async (data) => {
 //read
 exports.listQuotes = async () => {
     //listing saved
-    const res = await Quotes.find({}, "phrase author");
+    const res = await Quotes.find({}, "phrase author category");
     return res;
     
 }

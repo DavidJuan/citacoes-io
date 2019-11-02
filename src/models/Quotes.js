@@ -13,8 +13,9 @@ const Quote = new Schema({
         required: true
     },
     category:{
-        type: String,
-        trim: true
+        type: Schema.Types.ObjectId,
+        ref: "Categories",
+        required: true
     },
     midia:{
         type: String,

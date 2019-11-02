@@ -25,6 +25,7 @@ mongoose.connect(process.env.DATABASE_CONNECTION_STRING,{useNewUrlParser:true,
 //Load models
 const Quotes = require("./models/Quotes")
 const Authors = require("./models/Authors")
+const Categories = require("./models/Categories")
 
 const db = mongoose.connection;
 
@@ -55,5 +56,8 @@ app.use('/quotes', quotesRoutes);
 
 const authorsRoutes = require('./routes/authors-routes');
 app.use('/authors', authorsRoutes);
+
+const categoriesRoutes = require('./routes/categories-routes');
+app.use('/categories', categoriesRoutes);
 
 module.exports = app;
