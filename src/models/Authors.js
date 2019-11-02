@@ -36,15 +36,10 @@ const Author = new Schema({
         type: String,
         trim: true
     },
-    dateCreation:{
-        type: Date,
-        default: Date.now()
-    },
     slug:{
         type: String,
         slug: ["firstName","lastName"]
-    }
-
-})
+    },
+},{timestamps:true})
 
 module.exports = mongoose.model("Authors", Author)

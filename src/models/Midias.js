@@ -14,6 +14,6 @@ const Midia = new Schema({
         type: String,
         slug: "name"
     }
-})
+},{timestamps:true})
 
 module.exports = mongoose.model("Midias", Midia)

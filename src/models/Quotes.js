@@ -18,8 +18,9 @@ const Quote = new Schema({
         required: true
     },
     midia:{
-        type: String,
-        trim: true
+        type: Schema.Types.ObjectId,
+        ref: "Midias",
+        required: true
     },
     dateQuote:{
         type: Date,
@@ -27,10 +28,6 @@ const Quote = new Schema({
         trim: true,
         default: Date.now()
     },
-    dateCreation:{
-        type: Date,
-        default: Date.now()
-    },
-})
+},{timestamps:true})
 
 module.exports = mongoose.model("Quotes", Quote);

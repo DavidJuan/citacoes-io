@@ -16,7 +16,9 @@ exports.createQuotes = async (req,res) => {
         await repository.createQuotes({
             phrase: req.body.phrase,
             author: req.body.author,
-            category: req.body.category
+            category: req.body.category,
+            midia: req.body.midia,
+            dateQuote: req.body.dateQuote
         })
         // const quote = new Quotes({
         //     phrase: req.body.phrase,
