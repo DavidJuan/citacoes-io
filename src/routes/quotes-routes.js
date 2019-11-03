@@ -7,10 +7,10 @@ const {check} = require("express-validator")
 router.post('/', [
     check("phrase")
         .isLength({min:7, max:100})
-        .withMessage("The mention length has to be between 7 and 100 characters"),
+        .withMessage("The phrase length has to be between 7 and 100 characters"),
     check("author")
         .isLength({min:7, max:50})
-        .withMessage("The mention length has to be between 7 and 100 characters")
+        .withMessage("The author length has to be between 7 and 50 characters")
 ],quotesController.createQuotes);
 
 //READ
@@ -20,10 +20,7 @@ router.get('/', quotesController.listQuotes);
 router.put('/:id', [
     check("phrase")
         .isLength({min:7, max:100})
-        .withMessage("The mention length has to be between 7 and 100 characters"),
-    check("author")
-        .isLength({min:7, max:50})
-        .withMessage("The mention length has to be between 7 and 100 characters")
+        .withMessage("The phrase length has to be between 7 and 100 characters")
 ], quotesController.updateQuotes)
 
 //DELETE
